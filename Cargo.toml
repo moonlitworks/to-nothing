@@ -14,8 +14,7 @@ bevy = "0.9"
 serde = "1.0"
 rand = "0.8.5"
 winit = "0.27.5"
-image = "0.24.4"
-bevy-inspector-egui = "0.14"
+image = "0.24.5"
 bevy_ecs_tilemap = "0.9"
 bevy_ecs_ldtk = "0.5"
 
@@ -30,5 +29,5 @@ opt-level = 3
 lto = "thin"
 
 [package.metadata.commands]
-run = "cargo watch -i assets -i target -- cargo run --example"
-build = "cargo build --release --example"
+run = "cargo watch -i assets -i target -- cargo run"
+build = "cargo build --release"
