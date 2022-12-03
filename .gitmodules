@@ -1,0 +1,3 @@
+[submodule "assets/private"]
+	path = assets/private
+	url = git@github.com:moonlitworks/to-nothing-private-assets.git
