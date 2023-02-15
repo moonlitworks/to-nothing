@@ -7,7 +7,7 @@ use bevy::prelude::*;
 
 fn main() {
     App::new()
-        .insert_resource(ClearColor(Color::BLACK))
+        .insert_resource(ClearColor(Color::rgb(0.075, 0.075, 0.075).into()))
         .add_plugin(startup::StartupPlugin)
         .add_plugin(splashscreen::SplashscreenPlugin)
         .add_plugin(main_menu::MainMenuPlugin)

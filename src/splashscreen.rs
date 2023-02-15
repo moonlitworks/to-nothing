@@ -37,7 +37,7 @@ fn add_splashscreen(
             Splashscreen,
             SpriteBundle {
                 sprite: Sprite {
-                    color: Color::WHITE,
+                    color: Color::rgb(0.075, 0.075, 0.075).into(),
                     custom_size: Some(Vec2::new(1280., 720.)),
                     ..default()
                 },
