@@ -4,6 +4,4 @@
 
 # Assets
 
-the `assets` folder are in a separate repository. License for this
-source code does not extend to the assets and the copyrights belong to
-their respective owners.
+The `assets` folder and its contents are under separate licenses.
