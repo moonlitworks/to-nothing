@@ -10,7 +10,7 @@ keywords = ["moonlitworks", "bevy", "gamedev", "rpg"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-bevy = "0.9"
+bevy = { version = "0.11", features = ["wayland"] }
 serde = "1.0"
 rand = "0.8.5"
 winit = "0.27.5"

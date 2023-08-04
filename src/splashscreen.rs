@@ -13,15 +13,12 @@ pub struct SplashscreenTimer(Timer);
 impl Plugin for SplashscreenPlugin {
     fn build(&self, app: &mut App) {
         app.insert_resource(SplashscreenTimer(Timer::default()))
-            .add_system_set(
-                SystemSet::on_enter(GameState::Splashscreen).with_system(add_splashscreen),
+            .add_systems(
+                Update,
+                update_splashscreen.run_if(in_state(GameState::Splashscreen)),
             )
-            .add_system_set(
-                SystemSet::on_update(GameState::Splashscreen).with_system(update_splashscreen),
-            )
-            .add_system_set(
-                SystemSet::on_exit(GameState::Splashscreen).with_system(remove_splashscreen),
-            );
+            .add_systems(OnEnter(GameState::Splashscreen), add_splashscreen)
+            .add_systems(OnExit(GameState::Splashscreen), remove_splashscreen);
     }
 }
 
@@ -30,6 +27,8 @@ fn add_splashscreen(
     asset_server: ResMut<AssetServer>,
     mut timer: ResMut<SplashscreenTimer>,
 ) {
+    info!("Creating splashscreen");
+
     let texture = asset_server.load("cc-by-sa/moonlit-logo.png");
 
     commands
@@ -60,17 +59,19 @@ fn add_splashscreen(
 
 fn update_splashscreen(
     mut timer: ResMut<SplashscreenTimer>,
-    mut state: ResMut<State<GameState>>,
+    mut state: ResMut<NextState<GameState>>,
     time: Res<Time>,
 ) {
     if timer.0.just_finished() {
-        state.set(GameState::MainMenu).unwrap();
+        state.set(GameState::MainMenu);
     } else {
         timer.0.tick(time.delta());
     }
 }
 
 fn remove_splashscreen(mut commands: Commands, q_splashscreen: Query<Entity, &Splashscreen>) {
+    info!("Removing splashscreen");
+
     if let Some(splashscreen) = q_splashscreen.iter().next() {
         commands.entity(splashscreen).despawn_recursive();
     }

@@ -8,12 +8,14 @@ pub struct MainMenu;
 
 impl Plugin for MainMenuPlugin {
     fn build(&self, app: &mut App) {
-        app.add_system_set(SystemSet::on_enter(GameState::MainMenu).with_system(create_menu))
-            .add_system_set(SystemSet::on_exit(GameState::MainMenu).with_system(remove_menu));
+        app.add_systems(OnEnter(GameState::MainMenu), create_menu)
+            .add_systems(OnExit(GameState::MainMenu), remove_menu);
     }
 }
 
 pub fn create_menu(mut commands: Commands, asset_server: Res<AssetServer>) {
+    info!("Creating main menu");
+
     let font: Handle<Font> = asset_server.load("external/fonts/DePixelKlein.ttf");
 
     commands
@@ -22,7 +24,8 @@ pub fn create_menu(mut commands: Commands, asset_server: Res<AssetServer>) {
             NodeBundle {
                 style: Style {
                     position_type: PositionType::Absolute,
-                    size: Size::new(Val::Percent(100.), Val::Percent(100.)),
+                    width: Val::Percent(100.),
+                    height: Val::Percent(100.),
                     align_self: AlignSelf::Center,
                     align_items: AlignItems::Center,
                     justify_content: JustifyContent::Center,
