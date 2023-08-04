@@ -24,6 +24,8 @@ fn main() {
 }
 
 fn setup_camera(mut commands: Commands) {
+    info!("Creating camera");
+
     commands.spawn(Camera2dBundle {
         projection: OrthographicProjection {
             scale: 0.33,
