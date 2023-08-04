@@ -10,6 +10,7 @@ credit both [Moonlit Works][2] and the respective asset creator.
 - sprites/nev.png
 
 [BigRicePiano][5]
+- sounds/theme.ogg
 
 
 
