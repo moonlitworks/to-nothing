@@ -1,0 +1,25 @@
+{
+	"name": "moonlitworks/to-nothing",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"runArgs": [
+		"--network=host",
+		"--runtime=nvidia"
+	],
+	"privileged": true,
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"vivaxy.vscode-conventional-commits",
+				"PKief.material-icon-theme",
+				"rust-lang.rust-analyzer",
+				"eamodio.gitlens"
+			]
+		}
+	}
+}
